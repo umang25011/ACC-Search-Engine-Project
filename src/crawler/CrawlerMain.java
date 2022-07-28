@@ -10,16 +10,16 @@ import org.jsoup.select.Elements;
 
 public class CrawlerMain {
 	 
-	private static final int MaxDepth = 5;							// maximum depth limit for crawler to search in webpages
-	private static final int MaxPage = 100;							// maximum pages crawler is allowed to fetched
-	private static HashSet<String> urls;	
+	private final int MaxDepth = 5;							// maximum depth limit for crawler to search in webpages
+	private final int MaxPage = 100;							// maximum pages crawler is allowed to fetched
+	private HashSet<String> urls;	
 	
 	public CrawlerMain()
 	{
 		urls = new HashSet<String>();
 	}
 	
-	public static String HTMLtoText(String ConstUrl)
+	public String HTMLtoText(String ConstUrl)
 	{
 		try {
 			Document doc = Jsoup.connect(ConstUrl).get();
@@ -41,7 +41,7 @@ public class CrawlerMain {
 			return urlsFromPage;		
 	}
 	
-	public static String savePages(String url) throws IOException
+	public String savePages(String url) throws IOException
 	{
 		String location = "C:\\Users\\admin\\eclipse-workspace\\Search Engine\\W3WebPages\\Text"+System.nanoTime()+".txt";
 		PrintWriter pw = new PrintWriter(location);

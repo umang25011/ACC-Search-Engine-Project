@@ -11,7 +11,6 @@ import java.util.List;
 import crawler.Trie;
 import crawler.CrawlerMain;
 
-
 public class NotStaticSearchEngine implements Serializable {
 	private Trie<ArrayList<Integer>> trie;
 	private final String wordRegex = "[[ ]*|[,]*|[)]*|[(]*|[\"]*|[;]*|[-]*|[:]*|[']*|[�]*|[\\.]*|[:]*|[/]*|[!]*|[?]*|[+]*]+";
@@ -42,7 +41,7 @@ public class NotStaticSearchEngine implements Serializable {
 		int i = 0;
 		while (linkIterator.hasNext()) {
 			String s1 = linkIterator.next();
-			txt = CrawlerMain.HTMLtoText(s1);
+			txt = crawl.HTMLtoText(s1);
 
 			if (txt.length() == 0) {
 				continue;
@@ -109,7 +108,7 @@ public class NotStaticSearchEngine implements Serializable {
 	}
 
 	// function to provide suggestions
-	public void suggestWords(String s) {
+	public String suggestWords(String s) {
 
 		int dstnc = 10000;
 		String suggest = "No Suggestions!";
@@ -123,7 +122,7 @@ public class NotStaticSearchEngine implements Serializable {
 		}
 
 		System.out.println("Did you mean " + suggest + "?");
-
+		return suggest;
 	}
 
 }

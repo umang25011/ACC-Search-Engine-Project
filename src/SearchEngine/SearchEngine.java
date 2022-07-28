@@ -41,7 +41,7 @@ public class SearchEngine implements Serializable {
 		int i = 0;
 		while (linkIterator.hasNext()) {
 			String s1 = linkIterator.next();
-			txt = CrawlerMain.HTMLtoText(s1);
+			txt = crawl.HTMLtoText(s1);
 
 			if (txt.length() == 0) {
 				continue;
@@ -93,7 +93,7 @@ public class SearchEngine implements Serializable {
 				}
 			} else {
 				System.out.println("The word <" + index[i] + "> is not in any file!");
-				suggestWords(index[i]);
+				// suggestWords(index[i]);
 				return null;
 			}
 		}
@@ -108,7 +108,7 @@ public class SearchEngine implements Serializable {
 	}
 
 	// function to provide suggestions
-	public static void suggestWords(String s) {
+	public static String suggestWords(String s) {
 
 		int dstnc = 10000;
 		String suggest = "No Suggestions!";
@@ -120,8 +120,8 @@ public class SearchEngine implements Serializable {
 				dstnc = d;
 			}
 		}
-
 		System.out.println("Did you mean " + suggest + "?");
+		return suggest;
 
 	}
 

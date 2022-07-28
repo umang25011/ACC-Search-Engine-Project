@@ -21,7 +21,7 @@ public class Console {
 
 	private static final String url = "https://www.w3.org/";
 	private static final String RegularExprWord = "[[ ]*|[,]*|[)]*|[(]*|[\"]*|[;]*|[-]*|[:]*|[']*|[�]*|[\\.]*|[:]*|[/]*|[!]*|[?]*|[+]*]+";
-	private static NotStaticSearchEngine searchEngineMain;
+	public static NotStaticSearchEngine searchEngineMain;
 
 	public static void startSearchEngine() {
 		try {
@@ -70,6 +70,7 @@ public class Console {
 			boolean bool = true;
 			Scanner sc = new Scanner(System.in);
 			while (bool) {
+				bool = false;
 				System.out.println("\t** SEARCH YOUR WORD HERE**");
 				if (!serword.equals(null)) {
 					String[] sp = serword.split(RegularExprWord);// spilt the regular expression word and the entered
@@ -77,7 +78,7 @@ public class Console {
 					String[] allsearchpages = searchEngineMain.search(sp);
 					try {
 						if (allsearchpages == null) {// to suggest the similar words
-							SearchEngine.suggestWords(serword);
+							// SearchEngine.suggestWords(serword);
 						} else {
 							Map<String, Integer> ul = null;// for unsorted Links
 							ul = new HashMap<>();
@@ -128,7 +129,7 @@ public class Console {
 				String[] allsearchpages = se.search(sp);
 				try {
 					if (allsearchpages == null) {// to suggest the similar words
-						SearchEngine.suggestWords(serword);
+						// SearchEngine.suggestWords(serword);
 					} else {
 						Map<String, Integer> ul = null;// for unsorted Links
 						ul = new HashMap<>();

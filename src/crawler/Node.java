@@ -2,7 +2,7 @@ package crawler;
 
 import java.util.*;
 
-public class Node<t> {
+public class Node<t> implements java.io.Serializable {
 
 	t value;
 	char key;

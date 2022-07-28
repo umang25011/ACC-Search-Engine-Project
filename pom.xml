@@ -50,6 +50,12 @@
   		<groupId>io.javalin</groupId>
   		<artifactId>javalin</artifactId>
   		<version>4.1.1</version>
-  	</dependency>
+  	</dependency>  
+    <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.12.4</version>
+</dependency>
   </dependencies>
+
 </project>

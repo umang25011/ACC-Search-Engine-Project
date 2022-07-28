@@ -1,6 +1,7 @@
 package SearchEngine;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -10,8 +11,7 @@ import java.util.List;
 import crawler.Trie;
 import crawler.CrawlerMain;
 
-public class SearchEngine {
-
+public class SearchEngine implements Serializable {
 	private static Trie<ArrayList<Integer>> trie;
 	private final String wordRegex = "[[ ]*|[,]*|[)]*|[(]*|[\"]*|[;]*|[-]*|[:]*|[']*|[�]*|[\\.]*|[:]*|[/]*|[!]*|[?]*|[+]*]+";
 	private static HashSet<String> allLinks;

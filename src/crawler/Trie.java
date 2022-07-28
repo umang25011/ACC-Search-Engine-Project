@@ -1,8 +1,9 @@
 package crawler;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Trie<t> {
+public class Trie<t> implements Serializable {
 
 	public int size;			// size of Trie
 	private Node<t> root;		// root of Trie

@@ -3,15 +3,19 @@ package GUI;
 import io.javalin.http.staticfiles.Location;
 import io.javalin.Javalin;
 
+import java.util.LinkedHashMap;
+
 import SearchEngine.SearchEngine;
+import console.Console;
 
 public class index {
   public static void main(String[] args) {
     Javalin app = Javalin.create(config -> {
       config.addStaticFiles("/", Location.CLASSPATH);
+      Console.startSearchEngine();
     }).start(7003);
 
-	  final String RegularExprWord = "[[ ]*|[,]*|[)]*|[(]*|[\"]*|[;]*|[-]*|[:]*|[']*|[�]*|[\\.]*|[:]*|[/]*|[!]*|[?]*|[+]*]+";
+    final String RegularExprWord = "[[ ]*|[,]*|[)]*|[(]*|[\"]*|[;]*|[-]*|[:]*|[']*|[�]*|[\\.]*|[:]*|[/]*|[!]*|[?]*|[+]*]+";
     SearchEngine searchEngine = new SearchEngine();
     // Run the Javalin Instance on the port 7003
     app.get("/main", ctx -> {
@@ -21,7 +25,12 @@ public class index {
     app.post("/search", ctx -> {
       // ctx.result(Main.search(ctx.formParam("Search_Query")));
       System.out.println(ctx.formParam("Search_Query"));
-      searchEngine.search(ctx.formParam("Search_Query").split(RegularExprWord));
+      LinkedHashMap<String, Integer> results = Console.search(ctx.formParam("Search_Query"));
+      System.out.println(results);
+      if (results.values().size() > 0) {
+
+        ctx.json(results);
+      }
     });
   }
 }
